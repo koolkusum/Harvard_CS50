@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: When running sort 1 with a randomized and sorted list it had a big difference between the two times compared to the other two that remain relatively the same. (big O and omega are different)
+
+sort2 uses: Merge Sort
+
+How do you know?: It performs the fastest out of all sorts on random lists and remains relatively the same in time even on a sorted list.
+
+sort3 uses: Selection Sort
+
+How do you know?: It runs faster than sort 1 but slower than sort 2 in random list. It also has realtively the same time when sorted or randomized lists.
