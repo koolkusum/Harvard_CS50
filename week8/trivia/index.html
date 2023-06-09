@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function()
+            {
+                var buttons = document.querySelectorAll('.section button');
+                buttons.forEach(function(button)
+                {
+                button.addEventListener('click', function()
+                {
+                    var selectedColor = button.textContent.trim().toUpperCase();
+                    var isCorrect = button.classList.contains('correct');
+                    var message = document.createElement('p');
+                    var section = button.parentNode;
+                    var previousMessage = section.querySelector('.message');
+                    if (previousMessage)
+                    {
+                        section.removeChild(previousMessage);
+                    }
+                    message.classList.add('message');
+
+                    if (isCorrect)
+                    {
+                        button.style.backgroundColor = 'green';
+                        message.textContent = 'Correct!';
+                    }
+                    else
+                    {
+                        button.style.backgroundColor = 'red';
+                        message.textContent = 'Incorrect';
+                    }
+                    section.appendChild(message);
+                    });
+                });
+                var answerForm = document.querySelector('.section form');
+                var answerInput = document.getElementById('answer');
+                answerForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    var answer = answerInput.value.trim().toLowerCase();
+                    var section = answerForm.parentNode;
+                    var previousMessage = section.querySelector('.message');
+                    if (previousMessage) {
+                        section.removeChild(previousMessage);
+                    }
+                    var message = document.createElement('p');
+                    message.classList.add('message');
+                    if (answer === 'potassium') {
+                        answerInput.style.backgroundColor = "green";
+                        message.textContent = 'Correct!';
+                    } else {
+                        answerInput.style.backgroundColor = "red";
+                        message.textContent = 'Incorrect';
+                    }
+                    section.appendChild(message);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the color of the sky?</h3>
+                <button class = "incorrect"> RED </button>
+                <button class = "correct"> BLUE </button>
+                <button class = "incorrect"> GREEN </button>
+                <button class = "incorrect"> ORANGE </button>
+                <!-- TODO: Add multiple choice question here -->
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What is the 19th element on the Periodic Table of Elements?</h3>
+                <form>
+                    <input type="text" id="answer" name="answer"><br>
+                    <input type="submit" value="Check Answer">
+                </form>
+                <!-- TODO: Add free response question here -->
+            </div>
+        </div>
+    </body>
+</html>
